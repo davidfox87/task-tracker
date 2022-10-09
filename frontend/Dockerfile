@@ -16,10 +16,17 @@ FROM nginx:1.21.0-alpine as production
 ENV NODE_ENV production
 # Copy built assets from builder
 COPY --from=builder /app/build /usr/share/nginx/html
-# Add your nginx.conf
+
+
+# Add your nginx.conf and ssl certs
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/config/*.key /etc/ssl/private/
+COPY ./nginx/config/*.crt /etc/ssl/certs/
+
 # Expose port
 EXPOSE 80
+EXPOSE 443
+
 # Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", 'daemon off;']
 
