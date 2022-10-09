@@ -20,7 +20,7 @@ COPY --from=builder /app/build /usr/share/nginx/html
 
 # Add your nginx.conf and ssl certs
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./nginx/config/*.key /etc/ssl/certs/
+COPY ./nginx/config/*.key /etc/ssl/private/
 COPY ./nginx/config/*.crt /etc/ssl/certs/
 
 # Expose port
