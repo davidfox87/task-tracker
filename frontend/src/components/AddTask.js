@@ -25,12 +25,13 @@ const AddTask = ({ onAdd }) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newPerson),
+            body: JSON.stringify(newTask),
         })
         .catch(error => {
             window.alert(error);
             return;
         });
+        
       onAdd(newTask)
 
       setForm({ name: "", position: "", level: "" });
