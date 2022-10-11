@@ -6,4 +6,7 @@ services:
     image: app-prod
     build:
       context: .
-      target: production
+    ports:
+      - 4567:443
+    environment:
+      NODE_ENV: production
