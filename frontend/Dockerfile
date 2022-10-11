@@ -3,11 +3,12 @@ ENV NODE_ENV production
 # Add a work directory
 WORKDIR /app
 # Cache and Install dependencies
-COPY package.json .
-COPY yarn.lock .
+COPY package*.json /app/
+
+COPY yarn.lock /app/
 RUN yarn install --production
 # Copy app files
-COPY . .
+COPY ./ /app/
 # Build the app
 RUN yarn build
 
@@ -27,6 +28,4 @@ COPY ./nginx/config/cert.pem /etc/ssl/certs/
 EXPOSE 80
 EXPOSE 443
 
-# Start nginx
-CMD ["nginx", "-g", 'daemon off;']
-
+CMD ["nginx", "-g", "daemon off;"]

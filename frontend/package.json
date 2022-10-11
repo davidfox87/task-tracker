@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "homepage": "https://staging.mlops-playground.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
