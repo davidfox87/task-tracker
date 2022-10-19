@@ -11,8 +11,10 @@ FROM nginx:stable-alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 # Add your nginx.conf and ssl certs
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./nginx/config/key.pem /etc/ssl/private/
-COPY ./nginx/config/cert.pem /etc/ssl/certs/
+
+# tls cert and key will get mounted into /etc/nginx/ssl directory by kubernetes volumemount
+# COPY ./nginx/config/key.pem /etc/nginx/ssl
+# COPY ./nginx/config/cert.pem /etc/nginx/ssl
 
 # Expose port
 EXPOSE 80

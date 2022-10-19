@@ -7,6 +7,6 @@ services:
     build:
       context: .
     ports:
-      - 4567:443
+      - 4567:80
     environment:
       NODE_ENV: production

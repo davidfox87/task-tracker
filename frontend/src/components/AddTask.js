@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 
+
+
 const AddTask = ({ onAdd }) => {
     //component-level state 
     const [form, setForm] = useState({
@@ -8,11 +10,18 @@ const AddTask = ({ onAdd }) => {
         day: "",
         reminder: false,
     }); 
+
+    // These methods will update the state properties.
+    function updateForm(value) {
+        return setForm((prev) => {
+            return { ...prev, ...value };
+        });
+    }
   
     async function onSubmit(e) {
         e.preventDefault();
 
-        if (!text) {
+        if (!form.text) {
             alert('Please add a task')
             return
         }
@@ -31,7 +40,7 @@ const AddTask = ({ onAdd }) => {
             window.alert(error);
             return;
         });
-        
+
       onAdd(newTask)
 
       setForm({ name: "", position: "", level: "" });
@@ -41,7 +50,7 @@ const AddTask = ({ onAdd }) => {
         <div className='form-control'>
             <label>Task</label>
             <input type='text' placeholder='Add Task' 
-                value={text} 
+                value={form.text} 
                 onChange={(e) => updateForm({ text: e.target.value })}
             />
         </div>
@@ -49,7 +58,7 @@ const AddTask = ({ onAdd }) => {
         <div className='form-control'>
             <label>Day and Time</label>
             <input type='text' placeholder='Add Day and Time'
-                value={day} 
+                value={form.day} 
                 onChange={(e) => updateForm({ day: e.target.value })}
             />
         </div>
@@ -57,8 +66,8 @@ const AddTask = ({ onAdd }) => {
         <div className='form-control form-control-check'>
             <label>Set Reminder</label>
             <input type='checkbox'
-                checked={reminder}
-                value={reminder} 
+                checked={form.reminder}
+                value={form.reminder} 
                 onChange={(e) => updateForm({ reminder: e.target.value })}
             />
         </div>
