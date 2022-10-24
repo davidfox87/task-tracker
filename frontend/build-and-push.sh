@@ -1,8 +1,8 @@
 #!/bin/bash -e
 docker login --username=foxy7887 -p MGSGiw550!
 
-image_name=foxy7887/task-tracker-app
-image_tag=v31
+image_name=foxy7887/task-tracker
+image_tag=v1
 full_image_name=${image_name}:${image_tag}
 
 cd "$(dirname "$0")" 
