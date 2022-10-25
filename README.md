@@ -16,5 +16,5 @@ cd frontend
 ./build-and-push.sh
 ```
 ghfghjk;kl;jkl
-dhdfh
+dhdfhmbmvmb
 hello again and againbkfggfjhcjgjffgbchdfhfg;hj;hjk;hjkkkkkkkkl;kl;jk;hl;kl;kl;lllllggggvvgfgfvbb
