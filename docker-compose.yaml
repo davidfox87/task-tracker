@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  app:
+  frontend:
     container_name: app-frontend
     image: app-frontend
     build:

@@ -2,10 +2,14 @@ FROM keymetrics/pm2:14-alpine
 # RUN addgroup backend && adduser -S -G backend backend
 # USER backend
 WORKDIR /backend
-COPY package.json ./
-COPY yarn.lock ./
-RUN yarn
-RUN yarn global add rootpath
+COPY package*.json ./
+
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
 COPY . .
+
 EXPOSE 8080
-CMD ["pm2-runtime", "start", "server.js"]
+CMD [ "node", "server.js" ]
