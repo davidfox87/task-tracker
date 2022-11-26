@@ -29,7 +29,7 @@ const AddTask = ({ onAdd }) => {
         const newTask = { ...form };
     
         // invoke the backend api to insert record into db
-        await fetch("http://localhost:5000/tasks/add", {
+        await fetch("http://backend:8080/tasks/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

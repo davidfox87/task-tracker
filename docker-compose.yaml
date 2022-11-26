@@ -11,6 +11,9 @@ services:
       - 85:80
     environment:
       NODE_ENV: production
+      BACKEND_URL: http://backend:8080
+    depends_on:
+      - 'mongo'
 
   backend:
     container_name: app-backend
@@ -22,13 +25,18 @@ services:
       - 8080:8080
     environment:
       NODE_ENV: production
+      MONGO_URL: mongodb://mongo:27017/tasks
+    depends_on:
+      - 'mongo'
 
   mongo:
     image: mongo
+    container_name: mongodb
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: tasks
     ports:
       - 27017:27017
     volumes:
