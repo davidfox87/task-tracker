@@ -9,8 +9,20 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
+// This section will help you get a list of all the records.
+recordRoutes.route("/tasks").get(function (req, res) {
+    let db_connect = dbo.getDb("tasks");
+    db_connect
+      .collection("tasks")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+  });
 
-    // This section will help you create a new record.
+
+// This section will help you create a new record.
 recordRoutes.route("/tasks/add").post(function (req, response) {
     let db_connect = dbo.getDb();
     let myobj = {
