@@ -25,7 +25,7 @@ services:
       - 8080:8080
     environment:
       NODE_ENV: production
-      MONGO_URL: mongodb://mongo:27017/tasks
+      MONGO_URL: mongodb://root:example@mongo:27017/tasks?authSource=admin
     depends_on:
       - 'mongo'
 
